@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Bosh sahifa{% endblock title %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="py-5 text-center">
+    <div class="container">
+        <h1 class="display-5 fw-bold">
+            <span class="text-warning">ProgrammingBLOG</span> ga xush kelibsiz
+        </h1>
+
+        <p class="lead text-muted mt-3">
+            Eng so'nggi maqolalar, yangiliklar va foydali ma'lumotlar shu yerda.
+        </p>
+
+        <div class="mt-4">
+            <a href="{% url 'article_list' %}" class="btn btn-warning btn-lg px-5">
+                Barcha postlarni ko'rish
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row text-center">
+
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold">📰 Yangi postlar</h5>
+                <p class="text-muted">
+                    Maqolalar doimiy ravishda yangilanadi.
+                </p>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold">✍️ Mualliflar</h5>
+                <p class="text-muted">
+                    Tajribali mualliflar tomonidan yozilgan.
+                </p>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold">📱 Moslashuvchan dizayn</h5>
+                <p class="text-muted">
+                    Telefon, planshet va kompyuterda qulay.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
