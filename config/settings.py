@@ -11,6 +11,21 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+from environs import Env
+
+env = Env()
+env.read_env()
+
+# # Parse email URLs, e.g. "smtp://"
+# email = env.dj_email_url("EMAIL_URL", default="smtp://")
+# EMAIL_HOST = email["EMAIL_HOST"]
+# EMAIL_PORT = email["EMAIL_PORT"]
+# EMAIL_HOST_PASSWORD = email["EMAIL_HOST_PASSWORD"]
+# EMAIL_HOST_USER = email["EMAIL_HOST_USER"]
+# EMAIL_USE_TLS = email["EMAIL_USE_TLS"]
+
+# # Parse cache URLS, e.g "redis://localhost:6379/0"
+# CACHES = {"default": env.dj_cache_url("CACHE_URL")}
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +35,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3h5#%*pf^da&l$sany2g39vg-5a0y3egso5@*v3u2pdpo8(@l4'
+SECRET_KEY = env.str("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
@@ -81,11 +96,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# # Parse database URLs, e.g.  "postgres://localhost:5432/mydb"
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    "default": env.dj_db_url("DATABASE_URL")
 }
 
 
