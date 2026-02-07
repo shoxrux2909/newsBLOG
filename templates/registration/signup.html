@@ -1,12 +1,27 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-{% block title %} Ro'yxatdan o'tish {% endblock title %}
+{% block title %}Ro'yxatdan o'tish{% endblock title %}
 
 {% block content %}
-    <h2>Ro'yxatdan o'tish</h2>
-    <form method="post">{% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" class="btn btn-success">Yuborish</button>
-    </form>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card shadow-sm">
+                <div class="card-header text-center">
+                    <h4>Ro'yxatdan o'tish</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-success w-100">Yuborish</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 {% endblock content %}
