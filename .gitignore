@@ -12,6 +12,7 @@ build/
 develop-eggs/
 dist/
 downloads/
+media/
 eggs/
 .eggs/
 lib/
@@ -205,6 +206,3 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
-
-#media
-media/
