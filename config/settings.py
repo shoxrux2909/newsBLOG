@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
-from environs import Env
+import os
+import dj_database_url
+from dotenv import load_dotenv
 
-env = Env()
-env.read_env()
+load_dotenv()
 
 # # Parse email URLs, e.g. "smtp://"
 # email = env.dj_email_url("EMAIL_URL", default="smtp://")
@@ -35,10 +36,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", default=False)
+DEBUG = os.getenv("DEBUG", default=False)
 
 ALLOWED_HOSTS = ['.pythonanywhere.com','127.0.0.1']
 
@@ -98,7 +99,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # # Parse database URLs, e.g.  "postgres://localhost:5432/mydb"
 DATABASES = {
-    "default": env.dj_db_url("DATABASE_URL")
+    "default": dj_database_url.parse(
+        os.getenv("DATABASE_URL")
+    )
 }
 
 
